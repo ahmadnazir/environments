@@ -26,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.33.10"
+  # config.vm.network "private_network", ip: "192.168.33.10"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -35,7 +35,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
-  # config.ssh.forward_agent = true
+  config.ssh.forward_agent = true
+
+  # config.ssh.username = "vagrant"
+  # config.ssh.password = "vagrant"
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -80,8 +83,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the file default.pp in the manifests_path directory.
   #
   config.vm.provision "puppet" do |puppet|
-    puppet.manifests_path = "manifests"
-    puppet.manifest_file  = "default.pp"
+    puppet.manifests_path = "puppet/manifests"
+    puppet.manifest_file  = "lamp.pp"
+    puppet.options = "--verbose --debug"
   end
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
@@ -124,7 +128,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # mandark: tests
   config.vm.provider "docker" do |d|
-    d.image = "tutum/debian:wheezy"
+    d.image = "ahmadnazir/debian-wheezy:0.1"
     d.has_ssh = true
   end
 end
