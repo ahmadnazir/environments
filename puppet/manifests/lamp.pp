@@ -41,7 +41,7 @@ package { 'php5-curl':              # @todo: move it to devtools?
 }
 
 # memcache related
-package { 'php5-memcache':
+package { 'php5-memcached':
   require => Package['php5'],
   ensure => installed,
 }
