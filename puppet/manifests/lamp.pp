@@ -35,12 +35,24 @@ package { 'php5-intl':
   ensure => installed,
 }
 
+package { 'php5-curl':              # @todo: move it to devtools?
+  require => Package['php5'],
+  ensure => installed,
+}
+
 # memcache related
 package { 'php5-memcache':
   require => Package['php5'],
   ensure => installed,
 }
 package { 'pkg-config':
+  require => Exec['apt-update'],
+  ensure => installed,
+}
+
+# @todo: not sure if this should be here..
+package { 'acl':
+  require => Exec['apt-update'],
   ensure => installed,
 }
 

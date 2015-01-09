@@ -17,12 +17,10 @@ TODO:
 ====
 
 	# Update the php.ini so that the mysql extension is enabled
-	sudo apt-get install acl # for setfacl support
 
 Dev
 ---
 	curl -sS https://getcomposer.org/installer | php; sudo mv composer.phar /usr/local/bin/composer
-	sudo apt-get install php5-curl
 
 Other Requirements
 ------------------
