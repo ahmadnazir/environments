@@ -1,40 +1,70 @@
+# --------
+# COMMANDS
+# --------
+
 # execute 'apt-get update'
 exec { 'apt-update':                    # exec resource named 'apt-update'
   command => '/usr/bin/apt-get update'  # command this resource will run
 }
 
+# --------
+# PACKAGES
+# --------
+
 # install apache2 package
 package { 'apache2':
-  require => Exec['apt-update'],        # require 'apt-update' before installing
+  require => Exec['apt-update'],
   ensure => installed,
-}
-
-# ensure apache2 service is running
-service { 'apache2':
-  ensure => running,
 }
 
 # install mysql-server package
 package { 'mysql-server':
-  require => Exec['apt-update'],        # require 'apt-update' before installing
+  require => Exec['apt-update'],
   ensure => installed,
-}
-
-# ensure mysql service is running
-service { 'mysql':
-  require => Package['mysql-server'],      # require 'mysql-server' before installing
-  ensure => running,
 }
 
 # install php5 package
 package { 'php5':
-  require => Exec['apt-update'],        # require 'apt-update' before installing
+  require => Exec['apt-update'],
   ensure => installed,
 }
+
+# install php5-mysql package
+package { 'php5-mysql':
+  require => Package['php5'],
+  ensure => installed,
+}
+
+# install php5-intl package
+package { 'php5-intl':
+  require => Package['php5'],
+  ensure => installed,
+}
+
+# --------
+# SERVICES
+# --------
+
+# ensure apache2 service is running
+service { 'apache2':
+  require => Package['apache2'],
+  ensure => running,
+}
+
+# ensure mysql service is running
+service { 'mysql':
+  require => Package['mysql-server'],
+  ensure => running,
+}
+
+# -----
+# FILES
+# -----
 
 # ensure info.php file exists
 file { '/var/www/info.php':
   ensure => file,
   content => '<?php  phpinfo(); ?>',    # phpinfo code
-  require => Package['apache2'],        # require 'apache2' package before creating
+  require => Package['apache2'],        
 } 
+
