@@ -18,10 +18,6 @@ TODO:
 
 	# Update the php.ini so that the mysql extension is enabled
 
-Dev
----
-	curl -sS https://getcomposer.org/installer | php; sudo mv composer.phar /usr/local/bin/composer
-
 Other Requirements
 ------------------
 
@@ -36,16 +32,12 @@ Other Requirements
 
 *Key*
 
-	```
 	curl -s https://packagecloud.io/gpg.key | sudo apt-key add -
 	echo "deb http://packages.blackfire.io/debian any main" | sudo tee /etc/apt/sources.list.d/blackfire.list
-	```
 
 *Agent*
 
-	```
 	sudo apt-get update
 	sudo apt-get install blackfire-agent
 	sudo apt-get install blackfire-php
 	# sudo blackfire-agent --register # Have the server ID and token available e.g. env vars
-	```
