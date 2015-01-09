@@ -35,6 +35,15 @@ package { 'php5-intl':
   ensure => installed,
 }
 
+# memcache related
+package { 'php5-memcache':
+  require => Package['php5'],
+  ensure => installed,
+}
+package { 'pkg-config':
+  ensure => installed,
+}
+
 # --------
 # SERVICES
 # --------

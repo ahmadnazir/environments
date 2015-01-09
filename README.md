@@ -21,17 +21,11 @@ TODO:
 
 Dev
 ---
-	sudo apt-get install git
-	sudo apt-get install curl
 	curl -sS https://getcomposer.org/installer | php; sudo mv composer.phar /usr/local/bin/composer
 	sudo apt-get install php5-curl
 
 Other Requirements
 ------------------
-
-**Memcache**
-	sudo apt-get install php5-memcached
-	sudo apt-get install pkg-config
 
 *Tried the following, probably not required*
 
