@@ -20,7 +20,5 @@ RUN apt-get -qq -y install couchdb memcached nodejs
 RUN apt-get clean
 RUN gem install foreman
 
-# Install Huboard
+# Required for Huboard
 RUN apt-get -qq -y install libssl-dev
-RUN git clone -b exp/ruby-2.2.2 https://github.com/ahmadnazir/huboard.git /app
-RUN cd /app; bundle install;
