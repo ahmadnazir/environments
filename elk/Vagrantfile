@@ -83,8 +83,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the file default.pp in the manifests_path directory.
   #
   config.vm.provision "puppet" do |puppet|
+    puppet.module_path = "~/.puppet/modules"
     puppet.manifests_path = "puppet/manifests"
-    puppet.manifest_file  = "node-dev.pp"
+    puppet.manifest_file  = "node-elk.pp"
     puppet.options = "--verbose --debug"
   end
 
