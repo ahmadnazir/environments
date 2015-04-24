@@ -128,7 +128,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # mandark: tests
   config.vm.provider "docker" do |d|
-    d.image = "ahmadnazir/debian-wheezy:0.1"
+    d.image = "./docker/"
     d.has_ssh = true
   end
 end
